@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Windows.Input;
+
 namespace ContextMenu
 {
     public class MoveToActionCell : BaseActionViewCell
@@ -22,6 +23,10 @@ namespace ContextMenu
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    if (IsAutoCloseEnabled)
+                    {
+                        ForceClose();
+                    }
                     Moved?.Invoke(BindingContext);
                     MovedCommand?.Execute(BindingContext);
                 });
